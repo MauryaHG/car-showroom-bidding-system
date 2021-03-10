@@ -1,12 +1,12 @@
 public class Car {
-    private String make;
-    private String model;
+    public String make;
+    public String model;
 
-    public Car(String make, String model){
-        this.make = make;
-        this.model = model;
+    public Car(String newMake, String newModel){
+        make = newMake;
+        model = newModel;
     }
     public String  getCarDescription(){
-        return (this.make + this.model);
+        return ("Maker: "+ make + " and Model: "+ model);
     }
 }
