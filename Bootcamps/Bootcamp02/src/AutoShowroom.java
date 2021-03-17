@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class AutoShowroom {
 
-    public static Car[] carArray = new Car[3];
+    ArrayList<Car> carArray = new ArrayList();
     public void printStatus() {
         System.out.println("Welcome to FIT2099 Showroom");
         createCars();
@@ -9,14 +12,14 @@ public class AutoShowroom {
     }
 
     public void createCars() {
-        carArray[0] = new Car("BMW", "X7");
-        carArray[1] = new Car("Audi", "A8");
-        carArray[2] = new Car("Mercedes", "GLS");
+        carArray.add(new Car("BMW", "X7"));
+        carArray.add(new Car("Audi", "A8"));
+        carArray.add(new Car("Mercedes", "GLS"));
     }
 
     public void displayCars(){
-        for (int i =0; i < carArray.length; i++) {
-            System.out.println("Car (" +(i+1)+ ") " +carArray[i].getCarDescription());
+        for (int i =0; i < carArray.size(); i++) {
+            System.out.println("Car (" +(i+1)+ ") " +carArray.get(i).getCarDescription());
         }
     }
 }
