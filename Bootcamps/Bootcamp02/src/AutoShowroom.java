@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class AutoShowroom {
 
@@ -19,7 +18,7 @@ public class AutoShowroom {
 
     public void displayCars(){
         for (int i =0; i < carArray.size(); i++) {
-            System.out.println("Car (" +(i+1)+ ") " +carArray.get(i).getCarDescription());
+            System.out.println("Car (" +(i+1)+ ") " +carArray.get(i).description());
         }
     }
 }

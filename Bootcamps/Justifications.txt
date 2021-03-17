@@ -1,0 +1,13 @@
+integer:-
+        advantages
+            easier to use
+        disadvantages
+            complications as arraylist is used
+String:-
+        advantages
+            easier to use with arraylist methods as buyer name is also in string
+        disadvantages
+
+I have chose to use buyerId as type string as this would make it easier to handle with ArrayList methods
+
+givenName and familyName because people can have more than 2 names or people can have different order of firstName and lastName

@@ -6,7 +6,7 @@ public class Car {
         make = newMake;
         model = newModel;
     }
-    public String  getCarDescription(){
+    public String description(){
         return ("Maker: "+ make + " and Model: "+ model);
     }
 }
