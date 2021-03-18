@@ -5,6 +5,9 @@ public class Bid {
     private int bidPrice;
     private String date;
 
+    public Bid(String bidId) {
+        this.bidId = bidId;
+    }
 
     public Bid(String bidId, Buyer buyer, int bidPrice, String date) {
         this.bidId = bidId;
@@ -14,42 +17,34 @@ public class Bid {
     }
 
     public String getBidId() {
-
         return bidId;
     }
 
     public void setBidId(String bidId) {
-
         this.bidId = bidId;
     }
 
     public Buyer getBuyer() {
-
         return buyer;
     }
 
     public void setBuyer(Buyer buyer) {
-
-    this.buyer = buyer;
+        this.buyer = buyer;
     }
 
     public int getBidPrice() {
-
         return bidPrice;
     }
 
     public void setBidPrice(int bidPrice) {
-
         this.bidPrice = bidPrice;
     }
 
     public String getDate() {
-
         return date;
     }
 
     public void setDate(String date) {
-
         this.date = date;
     }
 }

@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Bootcamps/Bootcamp02/Bootcamp02.iml" filepath="$PROJECT_DIR$/Bootcamps/Bootcamp02/Bootcamp02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bootcamps/Bootcamp03256165/Bootcamp03256165.iml" filepath="$PROJECT_DIR$/Bootcamps/Bootcamp03256165/Bootcamp03256165.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bootcamps/Bootcamp3.iml" filepath="$PROJECT_DIR$/Bootcamps/Bootcamp3.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/FIT2099 Object oriented design and implementation.iml" filepath="$PROJECT_DIR$/.idea/FIT2099 Object oriented design and implementation.iml" />
     </modules>
   </component>
