@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Car {
     public String make;
     public String model;
-    private ArrayList bids = new ArrayList();
-    int bidCount = 0;
+    public ArrayList bids = new ArrayList();
+    public int bidCount = 0;
 
     public Car(String newMake, String newModel){
         make = newMake;
