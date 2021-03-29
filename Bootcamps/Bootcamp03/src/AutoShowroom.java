@@ -41,7 +41,7 @@ public class AutoShowroom {
 
                     Bid bidArray = (Bid) carArray.get(i).bids.get(j);
                     String buyer = bidArray.getBuyer().description();
-                    System.out.println("Bid (" + (j + 1) + ") : " + bidArray.getBidId() + " " + buyer + " " + bidArray.getBidPrice() + " " + bidArray.getDate()) ;
+                    System.out.println("edu.monash.fit2099.bids.Bid (" + (j + 1) + ") : " + bidArray.getBidId() + " " + buyer + " " + bidArray.getBidPrice() + " " + bidArray.getDate()) ;
                 }
             } else{
                 System.out.println("Car (" + (i + 1) + ") has 0 bids");
@@ -57,19 +57,19 @@ public class AutoShowroom {
             System.out.println("Enter 1 to bid or 0 to view next car");
             int choice = Integer.parseInt(scanner.nextLine());
             if (choice==1) {
-                System.out.println("Enter Buyer First name");
+                System.out.println("Enter edu.monash.fit2099.buyers.Buyer First name");
                 String firstName = scanner.nextLine();
 
-                System.out.println("Enter Buyer Last name");
+                System.out.println("Enter edu.monash.fit2099.buyers.Buyer Last name");
                 String givenName = scanner.nextLine();
 
-                System.out.println("Enter Buyer Id");
+                System.out.println("Enter edu.monash.fit2099.buyers.Buyer Id");
                 String buyerId = scanner.nextLine();
 
                 System.out.println("Enter Date");
                 String date = scanner.nextLine();
 
-                System.out.println("Enter Bid price");
+                System.out.println("Enter edu.monash.fit2099.bids.Bid price");
                 int bidPrice = Integer.parseInt(scanner.nextLine());
 
                 buyerArray.add(new Buyer(buyerId, firstName, givenName));

@@ -1,10 +1,19 @@
+package edu.monash.fit2099;
+
+import edu.monash.fit2099.bids.Bid;
+import edu.monash.fit2099.buyers.Buyer;
+import edu.monash.fit2099.vehicles.Sedan;
+import edu.monash.fit2099.vehicles.Truck;
+import edu.monash.fit2099.vehicles.Vehicle;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AutoShowroom {
 
     ArrayList<Vehicle> vehicleArray = new ArrayList();
-    ArrayList<Buyer> buyerArray = new ArrayList<>();
+    public static ArrayList<Buyer> buyerArray = new ArrayList<>();
+
     Scanner scanner = new Scanner(System.in);
     public void printStatus() {
         System.out.println("Welcome to FIT2099 Showroom");
@@ -14,9 +23,9 @@ public class AutoShowroom {
     }
 
     public void createCars() {
-        vehicleArray.add(new Sedan("BMW", "X7"));
-        vehicleArray.add(new Truck("Audi", "A8"));
-        vehicleArray.add(new Sedan("Mercedes", "GLS"));
+        vehicleArray.add(new Sedan("BMW", "X7",5));
+        vehicleArray.add(new Truck("Audi", "A8",4564,6));
+        vehicleArray.add(new Sedan("Mercedes", "GLS",4));
 
 
         buyerArray.add(new Buyer("AAAAA", "Issac", "Newton"));
@@ -39,9 +48,9 @@ public class AutoShowroom {
                 System.out.println("Car (" + (i + 1) + ") has " + bids + " bids");
                 for (int j =0; j < bids; j++) {
 
-                    Bid bidArray = (Bid) vehicleArray.get(i).bids.get(j);
+                    Bid bidArray = (Bid) vehicleArray.get(i).getBids().get(j);
                     String buyer = bidArray.getBuyer().description();
-                    System.out.println("Bid (" + (j + 1) + ") : " + bidArray.getBidId() + " " + buyer + " " + bidArray.getBidPrice() + " " + bidArray.getDate()) ;
+                    System.out.println("edu.monash.fit2099.bids.Bid (" + (j + 1) + ") : " + bidArray.getBidId() + " " + buyer + " " + bidArray.getBidPrice() + " " + bidArray.getDate()) ;
                 }
             } else{
                 System.out.println("Car (" + (i + 1) + ") has 0 bids");
@@ -77,5 +86,17 @@ public class AutoShowroom {
                 vehicleArray.get(i).addBid(buyerArray.get(buyer - 1), bidPrice, date);
             }
             }
+        }
+        public void createSedan(){
+            System.out.println("Enter vehicle maker");
+            String maker = scanner.nextLine();
+
+            System.out.println("Enter vehicle model");
+            String model = scanner.nextLine();
+
+            System.out.println("Enter number of seats");
+            int numSeats = Integer.parseInt(scanner.nextLine());
+            vehicleArray.add(new Sedan(maker,model,numSeats));
+
         }
 }

@@ -1,3 +1,9 @@
+package edu.monash.fit2099.vehicles;
+
+import edu.monash.fit2099.bids.Bid;
+import edu.monash.fit2099.bids.BidManager;
+import edu.monash.fit2099.buyers.Buyer;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -5,21 +11,18 @@ import java.util.Scanner;
 abstract public class Vehicle {
     private String maker;
     private String model;
-    private int vId;
-    public ArrayList bids = new ArrayList(); //private
+    private String vId;
+    private BidManager bids = new BidManager();
+
     public int bidCount = 0;
 
     public Vehicle(String maker, String model){
         this.maker = maker;
         this.model = model;
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter any number");
-        int number = Integer.parseInt(scanner.nextLine());
-        vId = nextID(number);
     }
 
-    public Vehicle(String maker, String model, int vId) {
+    public Vehicle(String maker, String model, String vId) {
         this.maker = maker;
         this.model = model;
         this.vId = vId;
@@ -38,8 +41,13 @@ abstract public class Vehicle {
 
     public int nextID(int number) {
         Random r = new Random();
-        int low = number;//using literal values is not a good idea, replace them with input parameters
+        int low = number;
         int high = 99999;
         return (r.nextInt(high - low) + low);
+    }
+
+    public ArrayList getBids() {
+
+        return bids;
     }
 }

@@ -1,3 +1,4 @@
+package edu.monash.fit2099.buyers;
 
 public class Buyer {
 
