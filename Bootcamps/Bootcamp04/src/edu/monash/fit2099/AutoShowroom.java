@@ -20,7 +20,7 @@ public class AutoShowroom {
 
 
     public void printStatus() {
-
+        createCars();
         int selection;
         do {
             selection= printMenu();
@@ -65,14 +65,12 @@ public class AutoShowroom {
         return choice;
     }
     public void createCars() {
-        vehicleArray.add(new Sedan("BMW", "X7",5));
-        vehicleArray.add(new Truck("Audi", "A8",4564,6));
-        vehicleArray.add(new Sedan("Mercedes", "GLS",4));
+        vehicleArray.add(new Sedan("BMW", "X7","sedan1234",5));
+        vehicleArray.add(new Truck("Audi", "A8","truck4564",10,6));
+        vehicleArray.add(new Sedan("Mercedes", "GLS","sedan5678",4));
 
 
         buyerArray.add(new Buyer("AAAAA", "Issac", "Newton"));
-        buyerArray.add(new Buyer("AAAAB", "Keanu", "Revees"));
-        buyerArray.add(new Buyer("AAAAC", "Jhon", "Cena"));
         /*vehicleArray.get(0).addBid(buyerArray.get(0), 5000, "12/12/2020" );
         vehicleArray.get(0).addBid(buyerArray.get(1), 25000, "12/12/2021" );
         vehicleArray.get(1).addBid(buyerArray.get(2), 2000, "6/5/2021" );

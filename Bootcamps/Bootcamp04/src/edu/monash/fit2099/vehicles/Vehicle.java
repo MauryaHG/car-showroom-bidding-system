@@ -21,11 +21,13 @@ abstract public class Vehicle {
     }
 
     public String getvId() {
+
         return vId;
     }
 
 
     public BidManager getBids() {
+
         return bids;
     }
 

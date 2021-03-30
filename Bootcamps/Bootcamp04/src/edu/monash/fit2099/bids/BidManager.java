@@ -19,14 +19,18 @@ public class BidManager {
     public void addBid(String buyerId, int price, String date) {
         bidCount++;
         String bidId = String.valueOf(bidCount);
-        System.out.println(AutoShowroom.buyerArray);
         Buyer buyer = new Buyer(buyerId);
         Bid bid = new Bid(bidId,buyer, price, date);
         hashMap.put(buyerId,bid);
     }
     public void description(){
-        for (int i = 0; i < bidArray.size(); i++) {
-          System.out.println(bidArray.get(i));
+        for (String key: hashMap.keySet()) {
+          Bid tempBid = hashMap.get(key);
+            System.out.println(" { Bid Id= "+tempBid.getBidId()
+                                + ", Buyer Id=" + key
+                                + ", Price= " + tempBid.getBidPrice()
+                                + ", Date= " + tempBid.getDate() +"}"
+            );
         }
 
     }
