@@ -16,6 +16,19 @@ abstract public class Vehicle {
 
     public int bidCount = 0;
 
+    public void setvId(String vId) {
+        this.vId = vId;
+    }
+
+    public String getvId() {
+        return vId;
+    }
+
+
+    public BidManager getBids() {
+        return bids;
+    }
+
     public Vehicle(String maker, String model){
         this.maker = maker;
         this.model = model;
@@ -30,13 +43,8 @@ abstract public class Vehicle {
 
     public String description(){
 
-        return ("Maker: "+ this.maker + " and Model: "+ this.model);
-    }
+        return (this.getvId()+"|"+ this.maker + "|"+ this.model);
 
-    public void addBid(Buyer newBuyer, int price, String date){
-        bidCount++;
-        String bidId = String.valueOf(bidCount);
-        bids.add(new Bid(bidId, newBuyer, price, date));
     }
 
     public int nextID(int number) {
@@ -44,10 +52,5 @@ abstract public class Vehicle {
         int low = number;
         int high = 99999;
         return (r.nextInt(high - low) + low);
-    }
-
-    public ArrayList getBids() {
-
-        return bids;
     }
 }

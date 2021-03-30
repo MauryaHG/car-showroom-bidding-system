@@ -30,7 +30,7 @@ public class Buyer {
 
     public String description(){
 
-        return (buyerId + " " + givenName + " " + familyName);
+        return (this.buyerId + "|" + this.givenName + "|" + this.familyName);
     }
 
 }

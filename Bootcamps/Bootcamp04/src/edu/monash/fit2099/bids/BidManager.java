@@ -12,7 +12,7 @@ public class BidManager {
     HashMap<String,Bid> hashMap ;
 
     public BidManager() {
-        hashMap = new HashMap<String,Bid>();
+        hashMap = new HashMap<>();
 
     }
 
@@ -23,5 +23,11 @@ public class BidManager {
         Buyer buyer = new Buyer(buyerId);
         Bid bid = new Bid(bidId,buyer, price, date);
         hashMap.put(buyerId,bid);
+    }
+    public void description(){
+        for (int i = 0; i < bidArray.size(); i++) {
+          System.out.println(bidArray.get(i));
+        }
+
     }
 }

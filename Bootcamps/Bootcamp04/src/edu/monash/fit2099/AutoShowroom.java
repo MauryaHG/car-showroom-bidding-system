@@ -15,13 +15,55 @@ public class AutoShowroom {
     public static ArrayList<Buyer> buyerArray = new ArrayList<>();
 
     Scanner scanner = new Scanner(System.in);
+
+
+
+
     public void printStatus() {
-        System.out.println("Welcome to FIT2099 Showroom");
-        createCars();
-        displayCars();
+
+        int selection;
+        do {
+            selection= printMenu();
+            switch (selection) {
+                case 1:
+                    createSedan();
+                    break;
+                case 2:
+                    createTruck();
+                    break;
+                case 3:
+                    displayFleet();
+                    break;
+                case 4:
+                    createBuyer();
+                    break;
+                case 5:
+                    displayBuyers();
+                    break;
+                case 6:
+                    createBid();
+                    break;
+                case 7:
+                    break;
+            }
+            System.out.println("--------------------------");
+        }while (selection!=7);
         System.out.println("Thank you for visiting FIT2099 Showroom");
     }
-
+    public int printMenu(){
+        System.out.println("Welcome to FIT2099 Showroom");
+        System.out.println("1) New Sedan");
+        System.out.println("2) New Truck");
+        System.out.println("3) Display Fleet");
+        System.out.println("4) Add Buyer");
+        System.out.println("5) List Buyers");
+        System.out.println("6) Add bid");
+        System.out.println("7) Exit");
+        System.out.print("Select an option: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        return choice;
+    }
     public void createCars() {
         vehicleArray.add(new Sedan("BMW", "X7",5));
         vehicleArray.add(new Truck("Audi", "A8",4564,6));
@@ -31,15 +73,15 @@ public class AutoShowroom {
         buyerArray.add(new Buyer("AAAAA", "Issac", "Newton"));
         buyerArray.add(new Buyer("AAAAB", "Keanu", "Revees"));
         buyerArray.add(new Buyer("AAAAC", "Jhon", "Cena"));
-        vehicleArray.get(0).addBid(buyerArray.get(0), 5000, "12/12/2020" );
+        /*vehicleArray.get(0).addBid(buyerArray.get(0), 5000, "12/12/2020" );
         vehicleArray.get(0).addBid(buyerArray.get(1), 25000, "12/12/2021" );
         vehicleArray.get(1).addBid(buyerArray.get(2), 2000, "6/5/2021" );
-        bidding();
+        bidding();*/
 
     }
 
     public void displayCars(){
-        for (int i = 0; i < vehicleArray.size(); i++) {
+        /*for (int i = 0; i < vehicleArray.size(); i++) {
 
             System.out.println("Car (" +(i+1)+ ") " + vehicleArray.get(i).description());
             if (vehicleArray.get(i).bidCount > 0) {
@@ -55,11 +97,11 @@ public class AutoShowroom {
             } else{
                 System.out.println("Car (" + (i + 1) + ") has 0 bids");
             }
-        }
+        }*/
     }
 
     public void bidding(){
-        for (int i = 0; i < vehicleArray.size(); i++) {
+        /*for (int i = 0; i < vehicleArray.size(); i++) {
 
             System.out.println("Car (" + (i + 1) + ") " + vehicleArray.get(i).description());
 
@@ -85,18 +127,81 @@ public class AutoShowroom {
                 int buyer = buyerArray.size();
                 vehicleArray.get(i).addBid(buyerArray.get(buyer - 1), bidPrice, date);
             }
+            }*/
+    }
+    public void createSedan(){
+        System.out.print("Enter sedan maker: ");
+        String maker = scanner.nextLine();
+
+        System.out.print("Enter sedan model:");
+        String model = scanner.nextLine();
+
+        System.out.print("Enter number of seats:");
+        int numSeats = Integer.parseInt(scanner.nextLine());
+        vehicleArray.add(new Sedan(maker,model,numSeats));
+        System.out.println(vehicleArray.get(vehicleArray.size()-1).description());
+
+    }
+    public void createTruck(){
+        System.out.print("Enter truck maker:");
+        String maker = scanner.nextLine();
+
+        System.out.print("Enter truck model:");
+        String model = scanner.nextLine();
+
+        System.out.print("Enter number of wheels:");
+        int numWheels = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Enter truck capacity:");
+        int capacity = Integer.parseInt(scanner.nextLine());
+        vehicleArray.add(new Truck(maker,model,capacity,numWheels));
+        System.out.println(vehicleArray.get(vehicleArray.size()-1).description());
+
+    }
+    public void createBuyer(){
+        System.out.print("Enter Buyer First name:");
+        String firstName = scanner.nextLine();
+
+        System.out.print("Enter Buyer Last name:");
+        String givenName = scanner.nextLine();
+
+        System.out.print("Enter Buyer Id:");
+        String buyerId = scanner.nextLine();
+
+        buyerArray.add(new Buyer(firstName,givenName,buyerId));
+    }
+
+    public void createBid(){
+
+        System.out.print("Enter vehicle id:");
+        String vehicleId = scanner.nextLine();
+
+        System.out.print("Enter Buyer Id:");
+        String buyerId = scanner.nextLine();
+
+        System.out.print("Enter Date:");
+        String date = scanner.nextLine();
+
+        System.out.print("Enter Bid price:");
+        int bidPrice = Integer.parseInt(scanner.nextLine());
+
+        for (Vehicle vehicle : vehicleArray) {
+            if (vehicle.getvId().equals(vehicleId)) {
+
+                vehicle.getBids().addBid(buyerId, bidPrice, date);
             }
         }
-        public void createSedan(){
-            System.out.println("Enter vehicle maker");
-            String maker = scanner.nextLine();
+    }
 
-            System.out.println("Enter vehicle model");
-            String model = scanner.nextLine();
-
-            System.out.println("Enter number of seats");
-            int numSeats = Integer.parseInt(scanner.nextLine());
-            vehicleArray.add(new Sedan(maker,model,numSeats));
-
+    public void displayFleet(){
+        for (int i = 0; i < vehicleArray.size(); i++) {
+            System.out.println("Car (" + (i + 1) + ") "+ vehicleArray.get(i).description());
+            vehicleArray.get(i).getBids().description();
         }
+    }
+    public void displayBuyers(){
+        for (int i = 0; i < buyerArray.size(); i++) {
+            System.out.println("Buyer (" + (i + 1) + ") " + buyerArray.get(i).description());
+        }
+    }
 }
