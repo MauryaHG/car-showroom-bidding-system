@@ -6,12 +6,26 @@ public class Buyer {
     private String givenName;
     private String familyName;
 
+    public Buyer() {
+
+    }
+
+    public static Buyer getInstance(String givenName, String familyName, String buyerId){
+        Buyer buyer = new Buyer();
+        if(buyer.setFamilyName(familyName) && buyer.setGivenName(givenName)) {
+            buyer.setBuyerId(buyerId);
+            return buyer;
+        } else {
+            return null;
+        }
+    }
+
     public Buyer(String buyerId) {
 
         this.buyerId = buyerId;
     }
 
-    public Buyer(String buyerId, String givenName, String familyName) {
+    private Buyer(String buyerId, String givenName, String familyName) {
 
         this.buyerId = buyerId;
         setGivenName(givenName);
@@ -36,9 +50,21 @@ public class Buyer {
         return isValid;
     }
 
+    public void setBuyerId(String buyerId) {
+        this.buyerId = buyerId;
+    }
+
     public String description(){
 
         return (this.buyerId + "|" + this.givenName + "|" + this.familyName);
     }
 
+    @Override
+    public String toString() {
+        return "Buyer{" +
+                "buyerId='" + buyerId + '\'' +
+                ", givenName='" + givenName + '\'' +
+                ", familyName='" + familyName + '\'' +
+                '}';
+    }
 }

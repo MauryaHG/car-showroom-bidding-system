@@ -1,6 +1,7 @@
 package edu.monash.fit2099.vehicles;
 
 import edu.monash.fit2099.bids.BidManager;
+import edu.monash.fit2099.exceptions.VehicleException;
 
 import java.util.Random;
 
@@ -27,16 +28,21 @@ abstract public class Vehicle {
         return bids;
     }
 
-    public Vehicle(String maker, String model){
-        setMaker(maker);
-        setModel(model);
+    public Vehicle(String maker, String model) throws VehicleException {
+        if (setMaker(maker) && setModel(model)) {
 
+        } else {
+            throw new VehicleException("Incorrect Maker OR Model");
+        }
     }
 
-    public Vehicle(String maker, String model, String vId) {
-        setMaker(maker);
-        setModel(model);
-        this.vId = vId;
+    public Vehicle(String maker, String model, String vId) throws VehicleException{
+        if (setMaker(maker) && setModel(model)) {
+            this.vId = vId;
+        } else {
+            throw new VehicleException("Incorrect Maker OR Model");
+        }
+
     }
 
     public String description(){
@@ -63,7 +69,7 @@ abstract public class Vehicle {
 
     public boolean setModel(String model) {
         boolean isValid=false;
-        if(model.length()>=3 && model.length()<=15){
+        if(model.length()>=2 && model.length()<=15){
             isValid=true;
             this.model = model;
         }

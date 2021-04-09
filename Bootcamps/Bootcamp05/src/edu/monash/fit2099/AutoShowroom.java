@@ -1,7 +1,9 @@
 package edu.monash.fit2099;
 
-import edu.monash.fit2099.bids.Bid;
 import edu.monash.fit2099.buyers.Buyer;
+import edu.monash.fit2099.exceptions.SedanException;
+import edu.monash.fit2099.exceptions.TruckException;
+import edu.monash.fit2099.exceptions.VehicleException;
 import edu.monash.fit2099.vehicles.Sedan;
 import edu.monash.fit2099.vehicles.Truck;
 import edu.monash.fit2099.vehicles.Vehicle;
@@ -65,13 +67,19 @@ public class AutoShowroom {
         return choice;
     }
     public void createCars() {
-        vehicleArray.add(new Sedan("BMW", "X7","sedan1234",5));
+        /*
+        try {
+            vehicleArray.add(new Sedan("BMW", "X7", "sedan1234", 6));
+        }
+        catch (VehicleException e){
+            System.out.println(e.getMessage());
+        }
         vehicleArray.add(new Truck("Audi", "A8","truck4564",10,6));
         vehicleArray.add(new Sedan("Mercedes", "GLS","sedan5678",4));
 
 
         buyerArray.add(new Buyer("AAAAA", "Issac", "Newton"));
-        /*vehicleArray.get(0).addBid(buyerArray.get(0), 5000, "12/12/2020" );
+        vehicleArray.get(0).addBid(buyerArray.get(0), 5000, "12/12/2020" );
         vehicleArray.get(0).addBid(buyerArray.get(1), 25000, "12/12/2021" );
         vehicleArray.get(1).addBid(buyerArray.get(2), 2000, "6/5/2021" );
         bidding();*/
@@ -136,7 +144,16 @@ public class AutoShowroom {
 
         System.out.print("Enter number of seats:");
         int numSeats = Integer.parseInt(scanner.nextLine());
-        vehicleArray.add(new Sedan(maker,model,numSeats));
+        try {
+            vehicleArray.add(new Sedan(maker,model,numSeats));
+        }
+        catch (SedanException e){
+            System.out.println(e.getMessage());
+        }
+        catch (VehicleException e){
+            System.out.println(e.getMessage());
+        }
+
         System.out.println(vehicleArray.get(vehicleArray.size()-1).description());
 
     }
@@ -152,7 +169,17 @@ public class AutoShowroom {
 
         System.out.print("Enter truck capacity:");
         int capacity = Integer.parseInt(scanner.nextLine());
-        vehicleArray.add(new Truck(maker,model,capacity,numWheels));
+
+        try {
+            vehicleArray.add(new Truck(maker,model,capacity,numWheels));
+        }
+        catch (TruckException e){
+            System.out.println(e.getMessage());
+        }
+        catch (VehicleException e){
+            System.out.println(e.getMessage());
+        }
+
         System.out.println(vehicleArray.get(vehicleArray.size()-1).description());
 
     }
@@ -166,7 +193,13 @@ public class AutoShowroom {
         System.out.print("Enter Buyer Id:");
         String buyerId = scanner.nextLine();
 
-        buyerArray.add(new Buyer(firstName,givenName,buyerId));
+       // buyerArray.add(new Buyer(firstName,givenName,buyerId));
+        Buyer buyer = Buyer.getInstance(givenName, firstName, buyerId);
+        if (buyer != null) {
+            buyerArray.add(buyer);
+            System.out.println(buyer);
+        } else
+            System.out.println("Something wrong with the buyer's values!!!");
     }
 
     public void createBid(){
