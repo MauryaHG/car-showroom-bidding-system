@@ -11,10 +11,17 @@ public class Truck extends Vehicle{
 
     public Truck(String newMaker, String newModel, int capacity, int wheels) throws VehicleException {
         super(newMaker, newModel);
+
         if(setCapacity(capacity) && setWheels(wheels)) {
             Scanner scanner = new Scanner(System.in);
+            int number=1;
             System.out.print("Enter any number:");
-            int number = Integer.parseInt(scanner.nextLine());
+            try {
+                number = Integer.parseInt(scanner.nextLine());
+            }
+            catch (NumberFormatException e){
+                System.out.println("Enter integer value");
+            }
             vId = ("truck" + String.valueOf(nextID(number)));
             setvId(vId);
         } else {

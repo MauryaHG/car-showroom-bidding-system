@@ -9,6 +9,7 @@ import edu.monash.fit2099.vehicles.Truck;
 import edu.monash.fit2099.vehicles.Vehicle;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AutoShowroom {
@@ -18,11 +19,8 @@ public class AutoShowroom {
 
     Scanner scanner = new Scanner(System.in);
 
-
-
-
     public void printStatus() {
-        createCars();
+        //createCars();
         int selection;
         do {
             selection= printMenu();
@@ -62,7 +60,16 @@ public class AutoShowroom {
         System.out.println("6) Add bid");
         System.out.println("7) Exit");
         System.out.print("Select an option: ");
-        int choice = scanner.nextInt();
+        int choice = 0;
+        boolean isOk = false;
+        while(!isOk){
+            try {
+                choice = scanner.nextInt();
+                isOk = true;
+            }catch (InputMismatchException e){
+                System.out.println("Enter integer from 1-7");
+            }
+        }
         scanner.nextLine();
         return choice;
     }
@@ -143,9 +150,16 @@ public class AutoShowroom {
         String model = scanner.nextLine();
 
         System.out.print("Enter number of seats:");
-        int numSeats = Integer.parseInt(scanner.nextLine());
+        int numSeats =0;
+        try {
+            numSeats = Integer.parseInt(scanner.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("Enter Integer");
+        }
+
         try {
             vehicleArray.add(new Sedan(maker,model,numSeats));
+            System.out.println(vehicleArray.get(vehicleArray.size()-1).description());
         }
         catch (SedanException e){
             System.out.println(e.getMessage());
@@ -154,7 +168,7 @@ public class AutoShowroom {
             System.out.println(e.getMessage());
         }
 
-        System.out.println(vehicleArray.get(vehicleArray.size()-1).description());
+
 
     }
     public void createTruck(){
@@ -165,10 +179,23 @@ public class AutoShowroom {
         String model = scanner.nextLine();
 
         System.out.print("Enter number of wheels:");
-        int numWheels = Integer.parseInt(scanner.nextLine());
+        int numWheels;
+        try {
+            numWheels = Integer.parseInt(scanner.nextLine());
+        }
+        catch (NumberFormatException e){
+            System.out.println("Enter integer");
+            return;
+        }
 
         System.out.print("Enter truck capacity:");
-        int capacity = Integer.parseInt(scanner.nextLine());
+        int capacity;
+        try {
+            capacity = Integer.parseInt(scanner.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("Input integer");
+            return;
+        }
 
         try {
             vehicleArray.add(new Truck(maker,model,capacity,numWheels));
@@ -214,11 +241,16 @@ public class AutoShowroom {
         String date = scanner.nextLine();
 
         System.out.print("Enter Bid price:");
-        int bidPrice = Integer.parseInt(scanner.nextLine());
+        int bidPrice = 0;
+        try {
+            bidPrice = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e){
+            System.out.println("Enter Integer value");
+        }
+
 
         for (Vehicle vehicle : vehicleArray) {
             if (vehicle.getvId().equals(vehicleId)) {
-
                 vehicle.getBids().addBid(buyerId, bidPrice, date);
             }
         }

@@ -10,13 +10,20 @@ public class Sedan extends Vehicle {
 
     public Sedan(String newMaker, String newModel, int seats) throws VehicleException {
         super(newMaker, newModel);
-        if(setSeats(seats)) {
+
+        if (setSeats(seats)) {
             this.seats = seats;
+            int number = 1;
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter any number:");
-            int number = Integer.parseInt(scanner.nextLine());
+            try {
+                number = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Enter integer");
+            }
             vId = ("sedan" + String.valueOf(nextID(number)));
             setvId(vId);
+
         } else {
             throw new VehicleException("Incorrect Seat number");
         }
