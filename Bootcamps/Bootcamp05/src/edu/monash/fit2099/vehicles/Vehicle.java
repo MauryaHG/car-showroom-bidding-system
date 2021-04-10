@@ -27,7 +27,9 @@ abstract public class Vehicle {
      * BidManager instance
      */
     private BidManager bids = new BidManager();
-
+    /**
+     * number of bids
+     */
     public int bidCount = 0;
 
 
@@ -60,7 +62,7 @@ abstract public class Vehicle {
     /**
      * @param maker maker of vehicle
      * @param model model of vehicle
-     * @throws VehicleException
+     * @throws VehicleException throws vehicle exception
      */
     public Vehicle(String maker, String model) throws VehicleException {
         if (setMaker(maker) && setModel(model)) {
@@ -72,7 +74,8 @@ abstract public class Vehicle {
     /**
      * @param maker maker of vehicle
      * @param model model of vehicle
-     * @throws VehicleException
+     * @param vId vehicle id of vehicle
+     * @throws VehicleException throws vehicle exception
      */
     public Vehicle(String maker, String model, String vId) throws VehicleException{
         if (setMaker(maker) && setModel(model)) {
@@ -85,7 +88,7 @@ abstract public class Vehicle {
 
     /**
      * displays vehicle added
-     * @return
+     * @return string of vehicle
      */
     public String description(){
 
@@ -95,7 +98,7 @@ abstract public class Vehicle {
 
     /**
      * creates random vehicle id
-     * @param number
+     * @param number any number entered by user
      * @return random integer
      */
     public int nextID(int number) {

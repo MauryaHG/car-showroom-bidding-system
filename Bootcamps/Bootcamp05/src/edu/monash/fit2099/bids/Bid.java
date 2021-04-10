@@ -34,6 +34,7 @@ public class Bid {
      * @param buyer buyer of the bid
      * @param bidPrice price of the bid
      * @param date date of the bid
+     * @throws BidException throws bid exception
      */
     public Bid(String bidId, Buyer buyer, int bidPrice, String date) throws BidException {
         if(setBidPrice(bidPrice) && setDate(date)) {
@@ -53,6 +54,7 @@ public class Bid {
     }
     /**
      * sets bid id of current instance
+     * @param bidId id of current bid
      */
     public void setBidId(String bidId) {
 
@@ -68,7 +70,7 @@ public class Bid {
     }
     /**
      * sets buyer of current instance
-     *
+     * @param buyer buyer of current bid
      */
     public void setBuyer(Buyer buyer) {
 
@@ -84,8 +86,8 @@ public class Bid {
     }
     /**
      * sets bid price of current instance
-     * @param bidPrice
-     * @return isValid
+     * @param bidPrice price of current bid
+     * @return isValid boolean if bid price is valid
      */
     public boolean setBidPrice(int bidPrice) {
         boolean isValid=false;
@@ -107,8 +109,8 @@ public class Bid {
 
     /**
      * sets date of current instance
-     * @param date
-     * @return isValid
+     * @param date date of current bid
+     * @return isValid  boolean is date is valid
      */
     public boolean setDate(String date) {
         boolean isValid=false;

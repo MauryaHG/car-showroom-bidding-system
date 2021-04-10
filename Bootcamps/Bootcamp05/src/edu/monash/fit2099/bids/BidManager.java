@@ -3,7 +3,6 @@ package edu.monash.fit2099.bids;
 import edu.monash.fit2099.buyers.Buyer;
 import edu.monash.fit2099.exceptions.BidException;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -14,8 +13,13 @@ import java.util.HashMap;
  *
  */
 public class BidManager {
-    private ArrayList<Bid> bidArray = new ArrayList<>();
+    /**
+     * number of bids
+     */
     public int bidCount = 0;
+    /**
+     * hashmap of bid and buyer
+     */
     HashMap<String,Bid> hashMap ;
 
     /**

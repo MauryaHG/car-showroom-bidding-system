@@ -24,7 +24,7 @@ public class Sedan extends Vehicle {
      * @param newMaker maker of sedan
      * @param newModel model of sedan
      * @param seats number of seats of sedan
-     * @throws VehicleException
+     * @throws VehicleException throws vehicle exception
      */
     public Sedan(String newMaker, String newModel, int seats) throws VehicleException {
         super(newMaker, newModel);
@@ -53,7 +53,7 @@ public class Sedan extends Vehicle {
      * @param model model of sedan
      * @param vId vehicle id of sedan
      * @param seats number of seats of sedan
-     * @throws VehicleException
+     * @throws VehicleException throws vehicle exception
      */
     public Sedan(String maker, String model, String vId, int seats) throws VehicleException {
         super(maker, model, vId);
@@ -63,7 +63,7 @@ public class Sedan extends Vehicle {
     /**
      * checks if number os seats have a valid value
      * @param seats number of seats of sedan
-     * @return
+     * @return isValid boolean
      */
     public boolean setSeats(int seats) {
         boolean isValid=false;

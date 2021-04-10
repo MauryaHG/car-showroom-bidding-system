@@ -15,7 +15,8 @@ import java.util.Scanner;
 /**
  * @author Maurya
  * @version 5.0.0
- * @see Vehicle,Buyer
+ * @see Vehicle
+ * @see Buyer
  *
  */
 public class AutoShowroom {
@@ -27,11 +28,12 @@ public class AutoShowroom {
      * array of all the buyers
      */
     public static ArrayList<Buyer> buyerArray = new ArrayList<>();
-
+    /**
+     * creates new scanner instance
+     */
     Scanner scanner = new Scanner(System.in);
     /**
      * This method takes the users input and calls the relavent method
-     * @param -
      */
     public void printStatus() {
         //createCars();
@@ -70,7 +72,6 @@ public class AutoShowroom {
 
     /**
      * Prints out instructions for user to follow
-     * @param "none"
      * @return choice integer entered by user
      */
     public int printMenu(){
@@ -102,10 +103,7 @@ public class AutoShowroom {
 
     /**
      * creates a new sedan using user input
-     * @param "none"
-     * @return none
-     * @exception SedanException,VehicleException
-     * @throws
+     * @exception NumberFormatException if integer value is not entered
      */
     public void createSedan(){
         System.out.print("Enter sedan maker: ");
@@ -145,10 +143,7 @@ public class AutoShowroom {
 
     /**
      * creates a new truck using user input
-     * @param "none"
-     * @return none
-     * @exception SedanException,VehicleException
-     * @throws
+     * @exception NumberFormatException if integer value is not entered
      */
     public void createTruck(){
         System.out.print("Enter truck maker:");
@@ -204,10 +199,6 @@ public class AutoShowroom {
     }
     /**
      * creates a new buyer using user input
-     * @param "none"
-     * @return none
-     * @exception
-     * @throws
      */
     public void createBuyer(){
         System.out.print("Enter Buyer First name:");
@@ -238,10 +229,7 @@ public class AutoShowroom {
 
     /**
      * creates a new BID using user input
-     * @param "none"
-     * @return none
-     * @exception edu.monash.fit2099.exceptions.BidException
-     * @throws
+     * @exception NumberFormatException if integer value is not entered
      */
     public void createBid(){
 
@@ -283,10 +271,6 @@ public class AutoShowroom {
     }
     /**
      * displays all the cars in vehicleArray
-     * @param "none"
-     * @return none
-     * @exception
-     * @throws
      */
     public void displayFleet(){
         for (int i = 0; i < vehicleArray.size(); i++) {
@@ -294,12 +278,9 @@ public class AutoShowroom {
             vehicleArray.get(i).getBids().description();
         }
     }
+
     /**
-     * displays all the buyers in buyerArray
-     * @param "none"
-     * @return none
-     * @exception
-     * @throws
+     * displays all ther buyers
      */
     public void displayBuyers(){
         for (int i = 0; i < buyerArray.size(); i++) {

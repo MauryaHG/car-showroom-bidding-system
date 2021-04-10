@@ -28,7 +28,7 @@ public class Truck extends Vehicle{
      * @param newModel model of truck
      * @param capacity capacity of truck
      * @param wheels number of wheels of truck
-     * @throws VehicleException
+     * @throws VehicleException throws vehicle exception
      */
     public Truck(String newMaker, String newModel, int capacity, int wheels) throws VehicleException {
         super(newMaker, newModel);
@@ -57,14 +57,18 @@ public class Truck extends Vehicle{
      * @param vId vehicle id  of truck
      * @param capacity capacity of truck
      * @param wheels number of wheels of truck
-     * @throws VehicleException
+     * @throws VehicleException throws vehicle exception
      */
     public Truck(String maker, String model, String vId, int capacity, int wheels) throws VehicleException {
         super(maker, model, vId);
         this.capacity = capacity;
         this.wheels = wheels;
     }
-
+    /**
+     *
+     * @param capacity capacity of truck
+     * @return isValid boolean value
+     */
     public boolean setCapacity(int capacity) {
         boolean isValid=false;
         if(capacity>=1 && capacity<=15){
@@ -73,7 +77,11 @@ public class Truck extends Vehicle{
         }
         return isValid;
     }
-
+    /**
+     *
+     * @param wheels number of wheels of truck
+     * @return isValid boolean value
+     */
     public boolean setWheels(int wheels) {
         boolean isValid=false;
         if(wheels>=4 && wheels<=16){
