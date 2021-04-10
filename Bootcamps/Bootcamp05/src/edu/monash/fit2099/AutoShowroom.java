@@ -12,15 +12,32 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * @author Maurya
+ * @version 5.0.0
+ * @see Vehicle,Buyer
+ *
+ */
 public class AutoShowroom {
-
+    /**
+     * array of all the vehicles in showroom
+     */
     ArrayList<Vehicle> vehicleArray = new ArrayList();
+    /**
+     * array of all the buyers
+     */
     public static ArrayList<Buyer> buyerArray = new ArrayList<>();
 
     Scanner scanner = new Scanner(System.in);
-
+    /**
+     * This method takes the users input and calls the relavent method
+     * @param -
+     */
     public void printStatus() {
         //createCars();
+        /**
+         * selection option chosen by user
+         */
         int selection;
         do {
             selection= printMenu();
@@ -50,6 +67,12 @@ public class AutoShowroom {
         }while (selection!=7);
         System.out.println("Thank you for visiting FIT2099 Showroom");
     }
+
+    /**
+     * Prints out instructions for user to follow
+     * @param "none"
+     * @return choice integer entered by user
+     */
     public int printMenu(){
         System.out.println("Welcome to FIT2099 Showroom");
         System.out.println("1) New Sedan");
@@ -60,7 +83,10 @@ public class AutoShowroom {
         System.out.println("6) Add bid");
         System.out.println("7) Exit");
         System.out.print("Select an option: ");
-        int choice = 0;
+        /**
+         * option chosen by user
+         */
+        int choice =0;
         boolean isOk = false;
         while(!isOk){
             try {
@@ -73,83 +99,31 @@ public class AutoShowroom {
         scanner.nextLine();
         return choice;
     }
-    public void createCars() {
-        /*
-        try {
-            vehicleArray.add(new Sedan("BMW", "X7", "sedan1234", 6));
-        }
-        catch (VehicleException e){
-            System.out.println(e.getMessage());
-        }
-        vehicleArray.add(new Truck("Audi", "A8","truck4564",10,6));
-        vehicleArray.add(new Sedan("Mercedes", "GLS","sedan5678",4));
 
-
-        buyerArray.add(new Buyer("AAAAA", "Issac", "Newton"));
-        vehicleArray.get(0).addBid(buyerArray.get(0), 5000, "12/12/2020" );
-        vehicleArray.get(0).addBid(buyerArray.get(1), 25000, "12/12/2021" );
-        vehicleArray.get(1).addBid(buyerArray.get(2), 2000, "6/5/2021" );
-        bidding();*/
-
-    }
-
-    public void displayCars(){
-        /*for (int i = 0; i < vehicleArray.size(); i++) {
-
-            System.out.println("Car (" +(i+1)+ ") " + vehicleArray.get(i).description());
-            if (vehicleArray.get(i).bidCount > 0) {
-
-                int bids = vehicleArray.get(i).bidCount;
-                System.out.println("Car (" + (i + 1) + ") has " + bids + " bids");
-                for (int j =0; j < bids; j++) {
-
-                    Bid bidArray = (Bid) vehicleArray.get(i).getBids().get(j);
-                    String buyer = bidArray.getBuyer().description();
-                    System.out.println("edu.monash.fit2099.bids.Bid (" + (j + 1) + ") : " + bidArray.getBidId() + " " + buyer + " " + bidArray.getBidPrice() + " " + bidArray.getDate()) ;
-                }
-            } else{
-                System.out.println("Car (" + (i + 1) + ") has 0 bids");
-            }
-        }*/
-    }
-
-    public void bidding(){
-        /*for (int i = 0; i < vehicleArray.size(); i++) {
-
-            System.out.println("Car (" + (i + 1) + ") " + vehicleArray.get(i).description());
-
-            System.out.println("Enter 1 to bid or 0 to view next car");
-            int choice = Integer.parseInt(scanner.nextLine());
-            if (choice==1) {
-                System.out.println("Enter Buyer First name");
-                String firstName = scanner.nextLine();
-
-                System.out.println("Enter Buyer Last name");
-                String givenName = scanner.nextLine();
-
-                System.out.println("Enter Buyer Id");
-                String buyerId = scanner.nextLine();
-
-                System.out.println("Enter Date");
-                String date = scanner.nextLine();
-
-                System.out.println("Enter Bid price");
-                int bidPrice = Integer.parseInt(scanner.nextLine());
-
-                buyerArray.add(new Buyer(buyerId, firstName, givenName));
-                int buyer = buyerArray.size();
-                vehicleArray.get(i).addBid(buyerArray.get(buyer - 1), bidPrice, date);
-            }
-            }*/
-    }
+    /**
+     * creates a new sedan using user input
+     * @param "none"
+     * @return none
+     * @exception SedanException,VehicleException
+     * @throws
+     */
     public void createSedan(){
         System.out.print("Enter sedan maker: ");
+        /**
+         * maker entered by user
+         */
         String maker = scanner.nextLine();
 
         System.out.print("Enter sedan model:");
+        /**
+         * model entered by user
+         */
         String model = scanner.nextLine();
 
         System.out.print("Enter number of seats:");
+        /**
+         * number of seats entered by user
+         */
         int numSeats =0;
         try {
             numSeats = Integer.parseInt(scanner.nextLine());
@@ -167,18 +141,32 @@ public class AutoShowroom {
         catch (VehicleException e){
             System.out.println(e.getMessage());
         }
-
-
-
     }
+
+    /**
+     * creates a new truck using user input
+     * @param "none"
+     * @return none
+     * @exception SedanException,VehicleException
+     * @throws
+     */
     public void createTruck(){
         System.out.print("Enter truck maker:");
+        /**
+         * maker entered by user
+         */
         String maker = scanner.nextLine();
 
         System.out.print("Enter truck model:");
+        /**
+         * model entered by user
+         */
         String model = scanner.nextLine();
 
         System.out.print("Enter number of wheels:");
+        /**
+         * number of wheels entered by user
+         */
         int numWheels;
         try {
             numWheels = Integer.parseInt(scanner.nextLine());
@@ -189,6 +177,9 @@ public class AutoShowroom {
         }
 
         System.out.print("Enter truck capacity:");
+        /**
+         * capacity of truck entered by user
+         */
         int capacity;
         try {
             capacity = Integer.parseInt(scanner.nextLine());
@@ -199,6 +190,7 @@ public class AutoShowroom {
 
         try {
             vehicleArray.add(new Truck(maker,model,capacity,numWheels));
+            System.out.println(vehicleArray.get(vehicleArray.size()-1).description());
         }
         catch (TruckException e){
             System.out.println(e.getMessage());
@@ -207,20 +199,35 @@ public class AutoShowroom {
             System.out.println(e.getMessage());
         }
 
-        System.out.println(vehicleArray.get(vehicleArray.size()-1).description());
+
 
     }
+    /**
+     * creates a new buyer using user input
+     * @param "none"
+     * @return none
+     * @exception
+     * @throws
+     */
     public void createBuyer(){
         System.out.print("Enter Buyer First name:");
+        /**
+         * first name entered of user
+         */
         String firstName = scanner.nextLine();
 
         System.out.print("Enter Buyer Last name:");
+        /**
+         * given name entered of user
+         */
         String givenName = scanner.nextLine();
 
         System.out.print("Enter Buyer Id:");
+        /**
+         * buyer ID  of user
+         */
         String buyerId = scanner.nextLine();
 
-       // buyerArray.add(new Buyer(firstName,givenName,buyerId));
         Buyer buyer = Buyer.getInstance(givenName, firstName, buyerId);
         if (buyer != null) {
             buyerArray.add(buyer);
@@ -229,18 +236,37 @@ public class AutoShowroom {
             System.out.println("Something wrong with the buyer's values!!!");
     }
 
+    /**
+     * creates a new BID using user input
+     * @param "none"
+     * @return none
+     * @exception edu.monash.fit2099.exceptions.BidException
+     * @throws
+     */
     public void createBid(){
 
         System.out.print("Enter vehicle id:");
+        /**
+         * Vehicle id of the  vehicle
+         */
         String vehicleId = scanner.nextLine();
 
         System.out.print("Enter Buyer Id:");
+        /**
+         * buyer ID of the user
+         */
         String buyerId = scanner.nextLine();
 
         System.out.print("Enter Date:");
+        /**
+         * date of bid
+         */
         String date = scanner.nextLine();
 
         System.out.print("Enter Bid price:");
+        /**
+         * Price of the bid
+         */
         int bidPrice = 0;
         try {
             bidPrice = Integer.parseInt(scanner.nextLine());
@@ -251,17 +277,30 @@ public class AutoShowroom {
 
         for (Vehicle vehicle : vehicleArray) {
             if (vehicle.getvId().equals(vehicleId)) {
-                vehicle.getBids().addBid(buyerId, bidPrice, date);
+                    vehicle.getBids().addBid(buyerId, bidPrice, date);
             }
         }
     }
-
+    /**
+     * displays all the cars in vehicleArray
+     * @param "none"
+     * @return none
+     * @exception
+     * @throws
+     */
     public void displayFleet(){
         for (int i = 0; i < vehicleArray.size(); i++) {
             System.out.println("Car (" + (i + 1) + ") "+ vehicleArray.get(i).description());
             vehicleArray.get(i).getBids().description();
         }
     }
+    /**
+     * displays all the buyers in buyerArray
+     * @param "none"
+     * @return none
+     * @exception
+     * @throws
+     */
     public void displayBuyers(){
         for (int i = 0; i < buyerArray.size(); i++) {
             System.out.println("Buyer (" + (i + 1) + ") " + buyerArray.get(i).description());

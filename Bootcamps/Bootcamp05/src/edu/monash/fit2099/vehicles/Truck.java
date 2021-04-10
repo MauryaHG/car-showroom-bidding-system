@@ -3,12 +3,33 @@ package edu.monash.fit2099.vehicles;
 import edu.monash.fit2099.exceptions.VehicleException;
 
 import java.util.Scanner;
-
+/**
+ * @author Maurya
+ * @version 5.0.0
+ * @see Vehicle
+ */
 public class Truck extends Vehicle{
+    /**
+     * capacity of truck
+     */
     private int capacity;
+    /**
+     * number of wheels on truck
+     */
     private int wheels;
+    /**
+     * vehicle id of truck
+     */
     private String vId = getvId();
 
+    /**
+     *
+     * @param newMaker maker of truck
+     * @param newModel model of truck
+     * @param capacity capacity of truck
+     * @param wheels number of wheels of truck
+     * @throws VehicleException
+     */
     public Truck(String newMaker, String newModel, int capacity, int wheels) throws VehicleException {
         super(newMaker, newModel);
 
@@ -29,6 +50,15 @@ public class Truck extends Vehicle{
         }
     }
 
+    /**
+     *
+     * @param maker maker of truck
+     * @param model model of truck
+     * @param vId vehicle id  of truck
+     * @param capacity capacity of truck
+     * @param wheels number of wheels of truck
+     * @throws VehicleException
+     */
     public Truck(String maker, String model, String vId, int capacity, int wheels) throws VehicleException {
         super(maker, model, vId);
         this.capacity = capacity;

@@ -5,37 +5,75 @@ import edu.monash.fit2099.exceptions.VehicleException;
 
 import java.util.Random;
 
+/**
+ * @author Maurya
+ * @version 5.0.0
+ * @see BidManager
+ */
 abstract public class Vehicle {
+    /**
+     * maker of vehicle
+     */
     private String maker;
+    /**
+     * model of vehicle
+     */
     private String model;
+    /**
+     * id of vehicle
+     */
     private String vId;
+    /**
+     * BidManager instance
+     */
     private BidManager bids = new BidManager();
 
     public int bidCount = 0;
 
+
+
+    /**
+     * sets vehicle id
+     * @param vId vehicle id
+     */
     public void setvId(String vId) {
         this.vId = vId;
     }
 
+    /**
+     * gets vehicle id
+     * @return vId vehicle id
+     */
     public String getvId() {
 
         return vId;
     }
 
-
+    /**
+     * gets BidManager object
+     * @return bids
+     */
     public BidManager getBids() {
 
         return bids;
     }
-
+    /**
+     * @param maker maker of vehicle
+     * @param model model of vehicle
+     * @throws VehicleException
+     */
     public Vehicle(String maker, String model) throws VehicleException {
         if (setMaker(maker) && setModel(model)) {
-
         } else {
             throw new VehicleException("Incorrect Maker OR Model");
         }
-    }
 
+    }
+    /**
+     * @param maker maker of vehicle
+     * @param model model of vehicle
+     * @throws VehicleException
+     */
     public Vehicle(String maker, String model, String vId) throws VehicleException{
         if (setMaker(maker) && setModel(model)) {
             this.vId = vId;
@@ -45,12 +83,21 @@ abstract public class Vehicle {
 
     }
 
+    /**
+     * displays vehicle added
+     * @return
+     */
     public String description(){
 
         return (this.getvId()+"|"+ this.maker + "|"+ this.model);
 
     }
 
+    /**
+     * creates random vehicle id
+     * @param number
+     * @return random integer
+     */
     public int nextID(int number) {
         Random r = new Random();
         int low = number;
@@ -58,6 +105,11 @@ abstract public class Vehicle {
         return (r.nextInt(high - low) + low);
     }
 
+    /**
+     *
+     * @param maker maker of vehicle
+     * @return isValid boolean value
+     */
     public boolean setMaker(String maker) {
         boolean isValid=false;
         if(maker.length()>=3 && maker.length()<=15){
@@ -66,7 +118,11 @@ abstract public class Vehicle {
         }
         return isValid;
     }
-
+    /**
+     *
+     * @param model maker of vehicle
+     * @return isValid boolean value
+     */
     public boolean setModel(String model) {
         boolean isValid=false;
         if(model.length()>=2 && model.length()<=15){
