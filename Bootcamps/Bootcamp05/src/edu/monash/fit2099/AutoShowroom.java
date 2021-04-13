@@ -96,8 +96,8 @@ public class AutoShowroom {
             }catch (InputMismatchException e){
                 System.out.println("Enter integer from 1-7");
             }
+            scanner.nextLine();
         }
-        scanner.nextLine();
         return choice;
     }
 
@@ -219,7 +219,7 @@ public class AutoShowroom {
          */
         String buyerId = scanner.nextLine();
 
-        Buyer buyer = Buyer.getInstance(givenName, firstName, buyerId);
+        Buyer buyer = Buyer.getInstance(firstName,givenName , buyerId);
         if (buyer != null) {
             buyerArray.add(buyer);
             System.out.println(buyer);
