@@ -69,10 +69,11 @@ public class AutoShowroom {
                     displayMinBid();
                     break;
                 case 9:
+                    deleteBid();
                     break;
             }
             System.out.println("--------------------------");
-        }while (selection!=9);
+        }while (selection!=11);
         System.out.println("Thank you for visiting FIT2099 Showroom");
     }
 
@@ -90,7 +91,8 @@ public class AutoShowroom {
         System.out.println("6) Add bid");
         System.out.println("7) Display Best Bids");
         System.out.println("8) Display Worst Bids");
-        System.out.println("9) Exit");
+        System.out.println("9) Delete Bid");
+        System.out.println("11) Exit");
         System.out.print("Select an option: ");
         /**
          * option chosen by user
@@ -311,6 +313,28 @@ public class AutoShowroom {
         }
     }
 
+    public void deleteBid(){
+        System.out.print("Enter vehicle id:");
+        /**
+         * Vehicle id of the  vehicle
+         */
+        String vehicleId = scanner.nextLine();
+
+        for (int i = 0; i < vehicleArray.size(); i++) {
+            if(vehicleArray.get(i).getvId().equals(vehicleId)){
+                System.out.print("Enter Bid id:");
+                /**
+                 * Bid id of the  bid on vehicle
+                 */
+                String bidId = scanner.nextLine();
+                vehicleArray.get(i).getBids().deleteBid(bidId);
+            }
+        }
+
+
+
+    }
+
 
     public void addData() {
         try {
@@ -330,7 +354,8 @@ public class AutoShowroom {
         buyerArray.add(Buyer.getInstance("jake", "paul", "55"));
         vehicleArray.get(0).getBids().addBid("55", 5000, "12/12/2020" );
         vehicleArray.get(0).getBids().addBid("22", 251, "12/12/2021");
-       // vehicleArray.get(2).getBids().addBid("sedan1234", 2000, "6/5/2021");
+        vehicleArray.get(2).getBids().addBid("22", 2000, "6/5/2021");
+        vehicleArray.get(2).getBids().addBid("55", 5, "6/7/2021");
 
     }
 }

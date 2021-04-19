@@ -76,12 +76,13 @@ public class BidManager {
                 if (maxBid.getValue().getBidPrice() < nextBid.getValue().getBidPrice()) {
                     maxBid = nextBid;
                 }
-                System.out.println("Best Bid: { Bid Id= " + maxBid.getValue().getBidId()
-                        + ", Buyer Id=" + maxBid.getKey()
-                        + ", Price= " + maxBid.getValue().getBidPrice()
-                        + ", Date= " + maxBid.getValue().getDate() + "}"
-                );
             }
+            System.out.println("Best Bid: { Bid Id= " + maxBid.getValue().getBidId()
+                    + ", Buyer Id=" + maxBid.getKey()
+                    + ", Price= " + maxBid.getValue().getBidPrice()
+                    + ", Date= " + maxBid.getValue().getDate() + "}"
+            );
+
         }
 
     }
@@ -95,13 +96,24 @@ public class BidManager {
                 if (minBid.getValue().getBidPrice() > nextBid.getValue().getBidPrice()) {
                     minBid = nextBid;
                 }
-                System.out.println("Worst Bid: { Bid Id= " + minBid.getValue().getBidId()
-                        + ", Buyer Id=" + minBid.getKey()
-                        + ", Price= " + minBid.getValue().getBidPrice()
-                        + ", Date= " + minBid.getValue().getDate() + "}"
-                );
+            }
+            System.out.println("Worst Bid: { Bid Id= " + minBid.getValue().getBidId()
+                    + ", Buyer Id=" + minBid.getKey()
+                    + ", Price= " + minBid.getValue().getBidPrice()
+                    + ", Date= " + minBid.getValue().getDate() + "}"
+            );
+        }
+
+    }
+    public void deleteBid(String bidId){
+        String toRemove = "";
+        for (String key: hashMap.keySet()) {
+            if (hashMap.get(key).getBidId().equals(bidId)){
+                toRemove = key;
+
             }
         }
+        hashMap.remove(toRemove);
 
     }
 }
