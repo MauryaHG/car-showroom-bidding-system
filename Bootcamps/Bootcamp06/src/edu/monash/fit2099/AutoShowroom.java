@@ -382,12 +382,7 @@ public class AutoShowroom {
 
         for (int i = 0; i < vehicleArray.size(); i++) {
             if(vehicleArray.get(i).getvId().equals(vehicleId)){
-                System.out.print("Enter Bid id:");
-                /**
-                 * Bid id of the  bid on vehicle
-                 */
-                String bidId = scanner.nextLine();
-                vehicleArray.get(i).getBids().deleteBid(bidId);
+                soldVehicleArray.add(vehicleArray.remove(i));
             }
         }
     }
