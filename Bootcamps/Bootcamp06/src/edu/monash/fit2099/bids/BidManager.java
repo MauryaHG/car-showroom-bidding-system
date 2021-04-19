@@ -67,43 +67,34 @@ public class BidManager {
 
     }
 
-    public void maxBid() {
+    public Map.Entry<String, Bid> maxBid() {
         ArrayList<Map.Entry<String, Bid>> bids = new ArrayList<>(hashMap.entrySet());
+        Map.Entry<String, Bid> maxBid = null;
         if (bids.size() > 0){
-            Map.Entry<String, Bid> maxBid = bids.get(0);
+            maxBid = bids.get(0);
             for (int i = 1; i < bids.size(); i++) {
                 Map.Entry<String, Bid> nextBid = bids.get(i);
                 if (maxBid.getValue().getBidPrice() < nextBid.getValue().getBidPrice()) {
                     maxBid = nextBid;
                 }
             }
-            System.out.println("Best Bid: { Bid Id= " + maxBid.getValue().getBidId()
-                    + ", Buyer Id=" + maxBid.getKey()
-                    + ", Price= " + maxBid.getValue().getBidPrice()
-                    + ", Date= " + maxBid.getValue().getDate() + "}"
-            );
-
         }
-
+        return maxBid;
     }
 
-    public void minBid() {
+    public Map.Entry<String, Bid> minBid() {
         ArrayList<Map.Entry<String, Bid>> bids = new ArrayList<>(hashMap.entrySet());
+        Map.Entry<String, Bid> minBid = null;
         if (bids.size() > 0){
-            Map.Entry<String, Bid> minBid = bids.get(0);
+           minBid = bids.get(0);
             for (int i = 1; i < bids.size(); i++) {
                 Map.Entry<String, Bid> nextBid = bids.get(i);
                 if (minBid.getValue().getBidPrice() > nextBid.getValue().getBidPrice()) {
                     minBid = nextBid;
                 }
             }
-            System.out.println("Worst Bid: { Bid Id= " + minBid.getValue().getBidId()
-                    + ", Buyer Id=" + minBid.getKey()
-                    + ", Price= " + minBid.getValue().getBidPrice()
-                    + ", Date= " + minBid.getValue().getDate() + "}"
-            );
         }
-
+        return minBid;
     }
     public void deleteBid(String bidId){
         String toRemove = "";
@@ -114,6 +105,7 @@ public class BidManager {
             }
         }
         hashMap.remove(toRemove);
+        bidCount--;
 
     }
 }

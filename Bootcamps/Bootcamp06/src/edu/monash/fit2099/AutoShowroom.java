@@ -1,5 +1,6 @@
 package edu.monash.fit2099;
 
+import edu.monash.fit2099.bids.Bid;
 import edu.monash.fit2099.buyers.Buyer;
 import edu.monash.fit2099.exceptions.SedanException;
 import edu.monash.fit2099.exceptions.TruckException;
@@ -10,6 +11,7 @@ import edu.monash.fit2099.vehicles.Vehicle;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -24,6 +26,11 @@ public class AutoShowroom {
      * array of all the vehicles in showroom
      */
     ArrayList<Vehicle> vehicleArray = new ArrayList();
+    /**
+     * array of all the sold vehicles
+     */
+    ArrayList<Vehicle> soldVehicleArray = new ArrayList();
+    /**
     /**
      * array of all the buyers
      */
@@ -71,6 +78,11 @@ public class AutoShowroom {
                 case 9:
                     deleteBid();
                     break;
+                case 10:
+                    sellVehicle();
+                    break;
+                case 11:
+                    break;
             }
             System.out.println("--------------------------");
         }while (selection!=11);
@@ -92,6 +104,7 @@ public class AutoShowroom {
         System.out.println("7) Display Best Bids");
         System.out.println("8) Display Worst Bids");
         System.out.println("9) Delete Bid");
+        System.out.println("10) Sell Vehicle");
         System.out.println("11) Exit");
         System.out.print("Select an option: ");
         /**
@@ -298,21 +311,46 @@ public class AutoShowroom {
         }
     }
 
-
+    /**
+     * display's maximum bids for all vehicles
+     */
     public void displayMaxBid(){
         for (int i = 0; i < vehicleArray.size(); i++) {
+            Vehicle currentVehicle = vehicleArray.get(i);
             System.out.println("Car (" + (i + 1) + ") "+ vehicleArray.get(i).description());
-            vehicleArray.get(i).getBids().maxBid();
+            if(currentVehicle.getBids().bidCount > 0) {
+                Map.Entry<String, Bid> maxBid = currentVehicle.getBids().maxBid();
+
+                System.out.println("Best Bid: { Bid Id= " + maxBid.getValue().getBidId()
+                        + ", Buyer Id=" + maxBid.getKey()
+                        + ", Price= " + maxBid.getValue().getBidPrice()
+                        + ", Date= " + maxBid.getValue().getDate() + "}"
+                );
+            }
         }
     }
-
+    /**
+     * display's minimum bids for all vehicles
+     */
     public void displayMinBid(){
         for (int i = 0; i < vehicleArray.size(); i++) {
-            System.out.println("Car (" + (i + 1) + ") "+ vehicleArray.get(i).description());
-            vehicleArray.get(i).getBids().minBid();
+            Vehicle currentVehicle = vehicleArray.get(i);
+            System.out.println("Car (" + (i + 1) + ") "+ currentVehicle.description());
+            if(currentVehicle.getBids().bidCount > 0) {
+                Map.Entry<String, Bid> minBid = currentVehicle.getBids().minBid();
+
+                System.out.println("Worst Bid: { Bid Id= " + minBid.getValue().getBidId()
+                        + ", Buyer Id=" + minBid.getKey()
+                        + ", Price= " + minBid.getValue().getBidPrice()
+                        + ", Date= " + minBid.getValue().getDate() + "}"
+                );
+            }
         }
     }
 
+    /**
+     * deletes specified bid from specified vehicle vehicles
+     */
     public void deleteBid(){
         System.out.print("Enter vehicle id:");
         /**
@@ -330,12 +368,29 @@ public class AutoShowroom {
                 vehicleArray.get(i).getBids().deleteBid(bidId);
             }
         }
-
-
-
     }
 
+    /**
+     * removes vehicle from vehicleArray and adds to sold array
+     */
+    public void sellVehicle(){
+        System.out.print("Enter vehicle id:");
+        /**
+         * Vehicle id of the  vehicle
+         */
+        String vehicleId = scanner.nextLine();
 
+        for (int i = 0; i < vehicleArray.size(); i++) {
+            if(vehicleArray.get(i).getvId().equals(vehicleId)){
+                System.out.print("Enter Bid id:");
+                /**
+                 * Bid id of the  bid on vehicle
+                 */
+                String bidId = scanner.nextLine();
+                vehicleArray.get(i).getBids().deleteBid(bidId);
+            }
+        }
+    }
     public void addData() {
         try {
             vehicleArray.add(new Sedan("BMW", "X7","sedan1234",5));
