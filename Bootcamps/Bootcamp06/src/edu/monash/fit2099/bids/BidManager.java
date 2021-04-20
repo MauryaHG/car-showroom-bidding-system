@@ -67,6 +67,10 @@ public class BidManager {
 
     }
 
+    /**
+     * Calculates the bid with the highest bidprice
+     * @return maxbid bid with largest bidprice
+     */
     public Map.Entry<String, Bid> maxBid() {
         ArrayList<Map.Entry<String, Bid>> bids = new ArrayList<>(hashMap.entrySet());
         Map.Entry<String, Bid> maxBid = null;
@@ -82,6 +86,10 @@ public class BidManager {
         return maxBid;
     }
 
+    /**
+     * Calculates the bid with the lowest bidprice
+     * @return maxbid bid with smallest bidprice
+     */
     public Map.Entry<String, Bid> minBid() {
         ArrayList<Map.Entry<String, Bid>> bids = new ArrayList<>(hashMap.entrySet());
         Map.Entry<String, Bid> minBid = null;
@@ -96,6 +104,9 @@ public class BidManager {
         }
         return minBid;
     }
+    /**
+    *
+     */
     public void deleteBid(String bidId){
         String toRemove = "";
         for (String key: hashMap.keySet()) {
